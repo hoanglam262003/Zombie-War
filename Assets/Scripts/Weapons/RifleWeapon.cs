@@ -16,7 +16,7 @@ public class RifleWeapon : WeaponBehaviour
 
     public override void EndAim()
     {
-        base.EndAim();
         Debug.Log("Stop Aim Rifle");
+        base.EndAim();
     }
 }
