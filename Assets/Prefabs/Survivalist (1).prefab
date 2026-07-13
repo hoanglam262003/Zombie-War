@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7451868040787053916}
+  - component: {fileID: 916955850432929848}
   m_Layer: 0
   m_Name: WeaponHolder_Grenade
   m_TagString: Untagged
@@ -32,6 +33,18 @@ Transform:
   - {fileID: 3486624319539193383}
   m_Father: {fileID: 6766536237691313224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &916955850432929848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178385565594808284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 446c55851562b5d4db6b45bcf6ccbd96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrenadeWeapon
 --- !u!1 &5338393071533705372
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,6 +54,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1216622286548492122}
+  - component: {fileID: 8619512564909610098}
   m_Layer: 0
   m_Name: WeaponHolder_Rifle
   m_TagString: Untagged
@@ -64,6 +78,18 @@ Transform:
   - {fileID: 1721402616645464060}
   m_Father: {fileID: 6766536237700630579}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8619512564909610098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5338393071533705372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7586d680199131b4bbd8e417292b8648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RifleWeapon
 --- !u!1 &6766536237596332339
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,6 +2161,13 @@ GameObject:
   m_Component:
   - component: {fileID: 6766536238432138805}
   - component: {fileID: 6766536238432138804}
+  - component: {fileID: 6275792550069406776}
+  - component: {fileID: 2488841700511660369}
+  - component: {fileID: 207846655901509830}
+  - component: {fileID: 6852237371342275734}
+  - component: {fileID: 3615249839188310280}
+  - component: {fileID: 1752055147159018679}
+  - component: {fileID: 5484290776866488021}
   m_Layer: 0
   m_Name: Survivalist (1)
   m_TagString: Untagged
@@ -2192,6 +2225,127 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!143 &6275792550069406776
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6766536238432138802}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2488841700511660369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6766536238432138802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc8f1521231801641aef2d2c42cbc6dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  characterController: {fileID: 6275792550069406776}
+  animator: {fileID: 6766536238432138804}
+  movement: {fileID: 3615249839188310280}
+  animationController: {fileID: 207846655901509830}
+  combat: {fileID: 6852237371342275734}
+  weapon: {fileID: 1752055147159018679}
+  health: {fileID: 5484290776866488021}
+  gameInput: {fileID: 0}
+--- !u!114 &207846655901509830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6766536238432138802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b123fce98097548b0ba3c2bc046874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
+--- !u!114 &6852237371342275734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6766536238432138802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fbfe164ebc0e074d8bfbd954140c962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
+--- !u!114 &3615249839188310280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6766536238432138802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad502708e1b346348bd5a67e698528e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  walkSpeed: 2
+  runSpeed: 6
+  rotationSpeed: 1000
+--- !u!114 &1752055147159018679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6766536238432138802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad9891ecda9baeb41bf3c20f56e28b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerWeapon
+  weapons:
+  - WeaponType: 0
+    Holder: {fileID: 0}
+    Behaviour: {fileID: 0}
+  - WeaponType: 1
+    Holder: {fileID: 5338393071533705372}
+    Behaviour: {fileID: 8619512564909610098}
+  - WeaponType: 2
+    Holder: {fileID: 7727036652754644918}
+    Behaviour: {fileID: 4143205340790123769}
+  - WeaponType: 3
+    Holder: {fileID: 178385565594808284}
+    Behaviour: {fileID: 916955850432929848}
+--- !u!114 &5484290776866488021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6766536238432138802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0fda99d9a96c4845ab0cbb6e178d369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
 --- !u!1 &6766536238452530525
 GameObject:
   m_ObjectHideFlags: 0
@@ -4220,6 +4374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7476471212707782745}
+  - component: {fileID: 4143205340790123769}
   m_Layer: 0
   m_Name: WeaponHolder_Pistol
   m_TagString: Untagged
@@ -4243,6 +4398,18 @@ Transform:
   - {fileID: 3918695582589754096}
   m_Father: {fileID: 6766536237700630579}
   m_LocalEulerAnglesHint: {x: -9.268, y: -0.56, z: 33.162}
+--- !u!114 &4143205340790123769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7727036652754644918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff32e08ed413db4d89e5935feff7fe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PistolWeapon
 --- !u!1001 &1567295938350589163
 PrefabInstance:
   m_ObjectHideFlags: 0
