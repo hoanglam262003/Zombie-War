@@ -4,6 +4,7 @@ public class PlayerAnimation : MonoBehaviour
 {
     private PlayerController controller;
     private Animator animator;
+    private WeaponType lastWeapon;
 
     #region Animator Hashes
 
@@ -28,13 +29,6 @@ public class PlayerAnimation : MonoBehaviour
     {
         controller = GetComponent<PlayerController>();
         animator = controller.Animator;
-        for (int i = 0; i < animator.layerCount; i++)
-        {
-            Debug.Log(
-              animator.GetLayerName(i)
-              + " weight = "
-              + animator.GetLayerWeight(i));
-        }
     }
 
     private void Update()
@@ -75,9 +69,16 @@ public class PlayerAnimation : MonoBehaviour
 
     private void UpdateWeaponAnimation()
     {
+        WeaponType current = controller.Weapon.CurrentWeapon;
+
+        if (current == lastWeapon)
+            return;
+
+        lastWeapon = current;
+
         animator.SetInteger(
             WeaponHash,
-            (int)controller.GameInput.CurrentWeapon);
+            (int)current);
     }
 
     public void SetAim(bool aiming)
