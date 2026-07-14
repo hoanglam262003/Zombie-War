@@ -648,7 +648,7 @@ GameObject:
   - component: {fileID: 6923911536548580015}
   - component: {fileID: 1619496883450659666}
   - component: {fileID: 707791913436792323}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ZombieMale_AAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}

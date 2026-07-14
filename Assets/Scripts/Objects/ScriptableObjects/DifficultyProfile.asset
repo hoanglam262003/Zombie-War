@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e427c154ab80dc41a30d4172c1d29e4, type: 3}
+  m_Name: DifficultyProfile
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultyProfile
+  levels:
+  - difficultyThreshold: 0
+    spawnInterval: 3
+    smallZombiesAmount: 3
+    bigZombiesAmount: 0
+  - difficultyThreshold: 5
+    spawnInterval: 2.5
+    smallZombiesAmount: 4
+    bigZombiesAmount: 1
+  - difficultyThreshold: 10
+    spawnInterval: 2
+    smallZombiesAmount: 6
+    bigZombiesAmount: 2
+  - difficultyThreshold: 15
+    spawnInterval: 1.5
+    smallZombiesAmount: 5
+    bigZombiesAmount: 3
+  - difficultyThreshold: 20
+    spawnInterval: 1
+    smallZombiesAmount: 5
+    bigZombiesAmount: 3
