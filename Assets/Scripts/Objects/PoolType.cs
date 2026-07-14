@@ -3,8 +3,7 @@ public enum PoolType
     SmallZombie,
     BigZombie,
 
-    RifleBullet,
-    PistolBullet,
+    Bullet,
 
     Grenade,
 
