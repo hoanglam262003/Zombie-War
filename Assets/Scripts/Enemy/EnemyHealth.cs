@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
@@ -6,6 +7,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     [Header("Health")]
     [SerializeField] private int maxHealth = 100;
 
+    [SerializeField] private float returnToPoolDelay = 3f;
     private EnemyController controller;
 
     public event Action<int, int> OnHealthChanged;
@@ -52,7 +54,12 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         controller.Movement.enabled = false;
 
         OnDead?.Invoke();
+        StartCoroutine(ReturnToPoolAfterDelay());
+    }
+    private IEnumerator ReturnToPoolAfterDelay()
+    {
+        yield return new WaitForSeconds(returnToPoolDelay);
 
-        Destroy(gameObject, 3f);
+        ObjectPoolManager.Instance.Return(gameObject);
     }
 }

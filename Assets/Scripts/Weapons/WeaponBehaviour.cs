@@ -27,4 +27,31 @@ public abstract class WeaponBehaviour : MonoBehaviour
     {
         playerController.Animation.SetAim(false);
     }
+
+    protected void SpawnBullet(WeaponConfig config, Transform firePoint)
+    {
+        GameObject bulletObj =
+            ObjectPoolManager.Instance.Get(
+                config.bulletPool,
+                firePoint.position,
+                firePoint.rotation);
+
+        if (bulletObj == null)
+            return;
+
+        Bullet bullet =
+            bulletObj.GetComponent<Bullet>();
+
+        if (bullet == null)
+            return;
+
+        Vector3 direction = playerController.Movement.FacingDirection;
+
+        GameObject obj = ObjectPoolManager.Instance.Get(PoolType.Bullet, firePoint.position, Quaternion.LookRotation(direction));
+
+        bullet.Initialize(
+            config.damage,
+            config.bulletSpeed,
+            direction);
+    }
 }

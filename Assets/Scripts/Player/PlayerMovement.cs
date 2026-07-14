@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -66,37 +67,62 @@ public class PlayerMovement : MonoBehaviour
 
         if (isAim)
         {
-            Vector3 aimDirection = new Vector3(
-                aimInput.x,
-                0f,
-                aimInput.y);
+            if (Application.isMobilePlatform)
+            {
+                Vector3 aimDirection = new Vector3(
+                    aimInput.x,
+                    0f,
+                    aimInput.y);
 
-            if (aimDirection.sqrMagnitude > 0.001f)
-            {
-                targetForward = aimDirection.normalized;
+                if (aimDirection.sqrMagnitude > 0.01f)
+                {
+                    targetForward = aimDirection.normalized;
+                }
             }
-            else if (IsMoving)
+            else
             {
-                targetForward = MoveDirection;
+                Ray ray =
+                    Camera.main.ScreenPointToRay(
+                        Mouse.current.position.ReadValue());
+
+                Plane ground =
+                    new Plane(Vector3.up, Vector3.zero);
+
+                if (ground.Raycast(ray, out float enter))
+                {
+                    Vector3 hitPoint =
+                        ray.GetPoint(enter);
+
+                    targetForward =
+                        hitPoint - transform.position;
+
+                    targetForward.y = 0f;
+
+                    if (targetForward.sqrMagnitude > 0.01f)
+                        targetForward.Normalize();
+                }
             }
         }
-        else
+        else if (IsMoving)
         {
-            if (IsMoving)
-            {
-                targetForward = MoveDirection;
-            }
+            targetForward = MoveDirection;
         }
+
+        if (targetForward.sqrMagnitude < 0.001f)
+            return;
 
         FacingDirection = targetForward;
 
         Quaternion targetRotation =
-            Quaternion.LookRotation(FacingDirection, Vector3.up);
+            Quaternion.LookRotation(
+                FacingDirection,
+                Vector3.up);
 
-        transform.rotation = Quaternion.RotateTowards(
-            transform.rotation,
-            targetRotation,
-            rotationSpeed * Time.deltaTime);
+        transform.rotation =
+            Quaternion.RotateTowards(
+                transform.rotation,
+                targetRotation,
+                rotationSpeed * Time.deltaTime);
     }
 
     private void UpdateState(bool isRunning)
