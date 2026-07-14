@@ -20,17 +20,19 @@ public class PlayerMovement : MonoBehaviour
     public bool IsMoving => MoveDirection.sqrMagnitude > 0.001f;
     public bool IsRunning { get; private set; }
 
+    private float movementLockTimer;
+
     private void Awake()
     {
         controller = GetComponent<PlayerController>();
     }
 
-    public void Tick(
-        Vector2 moveInput,
-        bool isRunning,
-        bool isAim,
-        Vector2 aimInput)
+    public void Tick(Vector2 moveInput, bool isRunning, bool isAim, Vector2 aimInput)
     {
+        if (movementLockTimer > 0f)
+        {
+            movementLockTimer -= Time.deltaTime;
+        }
         CalculateMoveDirection(moveInput);
 
         HandleMovement(isRunning);
@@ -50,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleMovement(bool isRunning)
     {
+        if (movementLockTimer > 0f)
+            return;
         MoveSpeed = isRunning ? runSpeed : walkSpeed;
 
         controller.CharacterController.Move(
@@ -115,5 +119,10 @@ public class PlayerMovement : MonoBehaviour
             MoveSpeed = walkSpeed;
             NormalizedSpeed = 2f;
         }
+    }
+
+    public void LockMovement(float duration)
+    {
+        movementLockTimer = duration;
     }
 }
