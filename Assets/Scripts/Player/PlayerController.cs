@@ -47,11 +47,29 @@ public class PlayerController : MonoBehaviour
     {
         if (gameInput == null)
             return;
-
+        if (health != null && health.IsDead)
+            return;
         movement?.Tick(
             gameInput.MoveInput,
             gameInput.IsRunning,
             gameInput.IsAimPressed,
             gameInput.AimDirection);
+    }
+
+    private void OnEnable()
+    {
+        health.OnDead += HandleDead;
+    }
+
+    private void OnDisable()
+    {
+        health.OnDead -= HandleDead;
+    }
+
+    private void HandleDead()
+    {
+        characterController.enabled = false;
+
+        enabled = false;
     }
 }
