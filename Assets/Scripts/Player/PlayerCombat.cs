@@ -8,9 +8,31 @@ public class PlayerCombat : MonoBehaviour
     controller.GameInput != null &&
     controller.GameInput.IsAimPressed;
 
+    private bool isShooting;
+    private float shootLockTimer;
+
     private void Awake()
     {
         controller = GetComponent<PlayerController>();
+    }
+
+    private void Update()
+    {
+        if (shootLockTimer > 0f)
+        {
+            shootLockTimer -= Time.deltaTime;
+            return;
+        }
+        if (!isShooting)
+            return;
+
+        WeaponBehaviour behaviour =
+            controller.Weapon.CurrentBehaviour;
+
+        if (behaviour == null)
+            return;
+
+        behaviour.Attack();
     }
 
     private void OnEnable()
@@ -46,8 +68,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void HandleShoot(bool value)
     {
-        if (!value)
-            return;
+        isShooting = value;
 
         WeaponBehaviour behaviour =
             controller.Weapon.CurrentBehaviour;
@@ -55,6 +76,24 @@ public class PlayerCombat : MonoBehaviour
         if (behaviour == null)
             return;
 
-        behaviour.Attack();
+        if (value)
+        {
+            behaviour.BeginFire();
+
+            if (controller.Weapon.CurrentWeapon == WeaponType.Pistol)
+            {
+                behaviour.Attack();
+            }
+        }
+        else
+        {
+            behaviour.EndFire();
+        }
+    }
+    public void LockShoot(float duration)
+    {
+        shootLockTimer = duration;
+        isShooting = false;
+        controller.Weapon.CurrentBehaviour?.EndFire();
     }
 }

@@ -24,6 +24,13 @@ public class EnemyCombat : MonoBehaviour
         player = FindFirstObjectByType<PlayerController>();
     }
 
+    private void OnEnable()
+    {
+        nextAttackTime = 0f;
+
+        IsAttacking = false;
+    }
+
     private void Update()
     {
         if (player == null)

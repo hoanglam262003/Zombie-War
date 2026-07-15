@@ -19,11 +19,27 @@ public class EnemyAnimation : MonoBehaviour
         animator = controller.Animator;
     }
 
+    private void OnEnable()
+    {
+        animator.SetBool(DeadHash, false);
+
+        animator.ResetTrigger(HitHash);
+        animator.ResetTrigger(AttackHash);
+
+        animator.Rebind();
+        animator.Update(0f);
+    }
+
     private void Update()
     {
-        animator.SetFloat(
-            SpeedHash,
-            controller.NavMeshAgent.velocity.magnitude);
+        float speed = 0f;
+
+        if (controller.NavMeshAgent.enabled)
+        {
+            speed = controller.NavMeshAgent.velocity.magnitude;
+        }
+
+        animator.SetFloat(SpeedHash, speed);
     }
     public void PlayAttack()
     {

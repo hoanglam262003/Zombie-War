@@ -33,4 +33,16 @@ public class EnemyController : MonoBehaviour
         health ??= GetComponent<EnemyHealth>();
         combat ??= GetComponent<EnemyCombat>();
     }
+
+    private void OnEnable()
+    {
+        NavMeshAgent.enabled = true;
+
+        Movement.enabled = true;
+        Combat.enabled = true;
+
+        NavMeshAgent.Warp(transform.position);
+        NavMeshAgent.ResetPath();
+        NavMeshAgent.isStopped = false;
+    }
 }

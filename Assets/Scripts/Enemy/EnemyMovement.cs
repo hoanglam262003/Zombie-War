@@ -23,6 +23,13 @@ public class EnemyMovement : MonoBehaviour
         controller.NavMeshAgent.stoppingDistance = stoppingDistance;
     }
 
+    private void OnEnable()
+    {
+        controller.NavMeshAgent.ResetPath();
+
+        controller.NavMeshAgent.isStopped = false;
+    }
+
     private void Update()
     {
         if (player == null)

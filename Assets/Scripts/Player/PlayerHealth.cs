@@ -39,6 +39,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
         controller.Animation.PlayHit();
         controller.Movement.LockMovement(0.5f);
+        controller.Combat.LockShoot(0.5f);
 
         if (CurrentHealth > 0)
             return;

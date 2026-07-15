@@ -25,6 +25,15 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         CurrentHealth = maxHealth;
     }
 
+    private void OnEnable()
+    {
+        StopAllCoroutines();
+
+        CurrentHealth = maxHealth;
+
+        OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+    }
+
     public void TakeDamage(int damage)
     {
         if (IsDead)
