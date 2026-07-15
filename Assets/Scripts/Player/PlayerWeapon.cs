@@ -110,4 +110,19 @@ public class PlayerWeapon : MonoBehaviour
     {
         return CurrentWeapon == weaponType;
     }
+
+    public void UnequipWeapon()
+    {
+        foreach (WeaponObject weapon in weaponLookup.Values)
+        {
+            if (weapon.Holder != null)
+            {
+                weapon.Holder.SetActive(false);
+            }
+        }
+
+        CurrentWeapon = WeaponType.Unarmed;
+        CurrentWeaponObject = null;
+        CurrentBehaviour = null;
+    }
 }

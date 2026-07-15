@@ -70,6 +70,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        controller.Weapon.UnequipWeapon();
         controller.Animation.SetDead(true);
 
         OnDead?.Invoke();
