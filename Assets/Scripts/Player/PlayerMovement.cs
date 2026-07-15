@@ -7,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float walkSpeed = 2f;
     [SerializeField] private float runSpeed = 6f;
     [SerializeField] private float rotationSpeed = 1000f;
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float strafeSpeedMultiplier = 0.8f;
 
     private PlayerController controller;
 
@@ -56,7 +59,10 @@ public class PlayerMovement : MonoBehaviour
         if (movementLockTimer > 0f)
             return;
         MoveSpeed = isRunning ? runSpeed : walkSpeed;
-
+        if (controller.Combat.IsAiming || controller.Combat.isShooting)
+        {
+            MoveSpeed *= strafeSpeedMultiplier;
+        }
         controller.CharacterController.Move(
             MoveDirection * MoveSpeed * Time.deltaTime);
     }
@@ -135,16 +141,15 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (isRunning)
+        float speed = isRunning ? runSpeed : walkSpeed;
+
+        if (controller.Combat.IsAiming || controller.Combat.isShooting)
         {
-            MoveSpeed = runSpeed;
-            NormalizedSpeed = 6f;
+            speed *= strafeSpeedMultiplier;
         }
-        else
-        {
-            MoveSpeed = walkSpeed;
-            NormalizedSpeed = 2f;
-        }
+
+        MoveSpeed = speed;
+        NormalizedSpeed = speed;
     }
 
     public void LockMovement(float duration)

@@ -8,7 +8,7 @@ public class PlayerCombat : MonoBehaviour
     controller.GameInput != null &&
     controller.GameInput.IsAimPressed;
 
-    private bool isShooting;
+    public bool isShooting { get; private set; }
     private float shootLockTimer;
 
     private void Awake()
