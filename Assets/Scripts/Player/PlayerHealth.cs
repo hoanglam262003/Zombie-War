@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         CurrentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Vector3 hitDirection)
     {
         if (IsDead)
             return;
@@ -31,6 +31,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         damage = Mathf.Max(0, damage);
 
         CurrentHealth -= damage;
+        SpawnBloodEffect(hitDirection);
 
         if (CurrentHealth < 0)
             CurrentHealth = 0;
@@ -45,6 +46,26 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             return;
 
         Die();
+    }
+
+    private void SpawnBloodEffect(Vector3 hitDirection)
+    {
+        Vector3 position =
+            transform.position +
+            Vector3.up;
+
+        hitDirection.y = 0f;
+
+        if (hitDirection.sqrMagnitude < 0.001f)
+            hitDirection = transform.forward;
+
+        Quaternion rotation =
+            Quaternion.LookRotation(-hitDirection);
+
+        ObjectPoolManager.Instance.Get(
+            PoolType.BloodEffect,
+            position,
+            rotation);
     }
 
     public void Heal(int amount)

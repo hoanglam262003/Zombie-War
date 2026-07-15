@@ -7,9 +7,7 @@ public class WeaponConfig : ScriptableObject
 
     public float fireRate = 2f;
 
-    public float range = 30f;
-
-    public float bulletSpeed = 40f;
+    public float speed = 40f;
 
     public PoolType bulletPool = PoolType.Bullet;
 

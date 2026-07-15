@@ -104,9 +104,9 @@ public class Bullet : MonoBehaviour
 
         if (enemy != null)
         {
-            enemy.TakeDamage(damage);
+            Vector3 direction = rb.linearVelocity.normalized;
 
-            //SpawnBloodEffect();
+            enemy.TakeDamage(damage, direction);
 
             ReturnToPool();
 
@@ -117,14 +117,6 @@ public class Bullet : MonoBehaviour
         {
             ReturnToPool();
         }
-    }
-
-    private void SpawnBloodEffect()
-    {
-        ObjectPoolManager.Instance.Get(
-            PoolType.BloodEffect,
-            transform.position,
-            Quaternion.identity);
     }
 
     private void ReturnToPool()

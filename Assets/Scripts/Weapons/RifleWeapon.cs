@@ -18,6 +18,8 @@ public class RifleWeapon : WeaponBehaviour
         nextFireTime =
             Time.time + 1f / config.fireRate;
 
+        PlayMuzzleFlash();
+        PlayShootSound();
         SpawnBullet(config, firePoint);
     }
     public override void BeginFire()

@@ -19,7 +19,8 @@ public class PistolWeapon : WeaponBehaviour
             Time.time + 1f / config.fireRate;
 
         SpawnBullet(config, firePoint);
-
+        PlayMuzzleFlash();
+        PlayShootSound();
         PlayShootAnimation();
     }
 }

@@ -2,6 +2,11 @@ using UnityEngine;
 
 public abstract class WeaponBehaviour : MonoBehaviour
 {
+    [SerializeField]
+    private WeaponVFX weaponVFX;
+    [SerializeField]
+    private WeaponSFX weaponSFX;
+
     protected PlayerController playerController;
 
     public virtual void Initialize(PlayerController controller)
@@ -10,6 +15,11 @@ public abstract class WeaponBehaviour : MonoBehaviour
     }
 
     public abstract void Attack();
+    protected void PlayMuzzleFlash()
+    {
+        if (weaponVFX != null)
+            weaponVFX.PlayMuzzleFlash();
+    }
     protected void PlayShootAnimation()
     {
         playerController.Animation.PlayShoot();
@@ -42,6 +52,26 @@ public abstract class WeaponBehaviour : MonoBehaviour
     public virtual void EndFire()
     {
     }
+
+    public virtual void BeginThrow()
+    {
+    }
+
+    public virtual void EndThrow()
+    {
+    }
+
+    protected void PlayShootSound()
+    {
+        if (weaponSFX != null)
+            weaponSFX.PlayShoot();
+    }
+
+    protected void PlayThrowSound()
+    {
+        if (weaponSFX != null)
+            weaponSFX.PlayThrow();
+    }
     protected void SpawnBullet(WeaponConfig config, Transform firePoint)
     {
         GameObject bulletObj =
@@ -62,7 +92,7 @@ public abstract class WeaponBehaviour : MonoBehaviour
 
         bullet.Initialize(
             config.damage,
-            config.bulletSpeed,
+            config.speed,
             direction);
     }
 }

@@ -76,7 +76,11 @@ public class EnemyCombat : MonoBehaviour
         if (distance > attackRange)
             return;
 
-        player.Health.TakeDamage(damage);
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+
+        player.Health.TakeDamage(
+            damage,
+            direction);
     }
 
     public void FinishAttack()

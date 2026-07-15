@@ -1124,6 +1124,15 @@ MonoBehaviour:
   - poolType: 2
     prefab: {fileID: 4724917565837390639, guid: 1360b67e6b4113841a4c4e3c70cd9208, type: 3}
     defaultSize: 20
+  - poolType: 3
+    prefab: {fileID: 8379429567202717663, guid: b64c6ac01fb55ad47969e2a54da477c5, type: 3}
+    defaultSize: 10
+  - poolType: 5
+    prefab: {fileID: 5481530993414605263, guid: 7a12b40fb78f3694ea3ba5830db032b4, type: 3}
+    defaultSize: 10
+  - poolType: 4
+    prefab: {fileID: 854640358310806081, guid: 4bcb6141bdb5cc14e82e2139d811ed2f, type: 3}
+    defaultSize: 20
 --- !u!1 &1090899968
 GameObject:
   m_ObjectHideFlags: 0
