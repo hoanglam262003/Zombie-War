@@ -16,6 +16,7 @@ public class PlayerAnimation : MonoBehaviour
     private static readonly int WeaponHash = Animator.StringToHash("WeaponType");
 
     private static readonly int ShootHash = Animator.StringToHash("Shoot");
+    private static readonly int FireHash = Animator.StringToHash("IsFiring");
     private static readonly int ThrowHash = Animator.StringToHash("Throw");
 
     private static readonly int HitHash = Animator.StringToHash("Hit");
@@ -89,6 +90,16 @@ public class PlayerAnimation : MonoBehaviour
     public void PlayShoot()
     {
         animator.SetTrigger(ShootHash);
+    }
+
+    public void BeginFire()
+    {
+        animator.SetBool(FireHash, true);
+    }
+
+    public void EndFire()
+    {
+        animator.SetBool(FireHash, false);
     }
 
     public void PlayThrow()

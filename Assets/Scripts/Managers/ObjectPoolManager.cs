@@ -96,11 +96,11 @@ public class ObjectPoolManager : MonoBehaviour
 
         if (obj == null)
             return null;
-
+        obj.SetActive(false);
         obj.transform.SetPositionAndRotation(
             position,
             rotation);
-
+        obj.SetActive(true);
         return obj;
     }
 

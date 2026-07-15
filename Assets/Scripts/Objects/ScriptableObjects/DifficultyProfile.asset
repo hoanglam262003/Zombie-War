@@ -15,20 +15,20 @@ MonoBehaviour:
   levels:
   - difficultyThreshold: 0
     spawnInterval: 3
-    smallZombiesAmount: 3
+    smallZombiesAmount: 1
     bigZombiesAmount: 0
   - difficultyThreshold: 5
     spawnInterval: 2.5
-    smallZombiesAmount: 4
+    smallZombiesAmount: 2
     bigZombiesAmount: 1
   - difficultyThreshold: 10
     spawnInterval: 2
-    smallZombiesAmount: 6
-    bigZombiesAmount: 2
+    smallZombiesAmount: 3
+    bigZombiesAmount: 1
   - difficultyThreshold: 15
     spawnInterval: 1.5
-    smallZombiesAmount: 5
-    bigZombiesAmount: 3
+    smallZombiesAmount: 4
+    bigZombiesAmount: 2
   - difficultyThreshold: 20
     spawnInterval: 1
     smallZombiesAmount: 5

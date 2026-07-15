@@ -2,21 +2,31 @@ using UnityEngine;
 
 public class RifleWeapon : WeaponBehaviour
 {
+    [SerializeField]
+    private WeaponConfig config;
+
+    [SerializeField]
+    private Transform firePoint;
+
+    private float nextFireTime;
+
     public override void Attack()
     {
-        Debug.Log("Rifle Fire");
-        PlayShootAnimation();
+        if (Time.time < nextFireTime)
+            return;
+
+        nextFireTime =
+            Time.time + 1f / config.fireRate;
+
+        SpawnBullet(config, firePoint);
+    }
+    public override void BeginFire()
+    {
+        BeginFireAnimation();
     }
 
-    public override void BeginAim()
+    public override void EndFire()
     {
-        Debug.Log("Aim Rifle");
-        base.BeginAim();
-    }
-
-    public override void EndAim()
-    {
-        Debug.Log("Stop Aim Rifle");
-        base.EndAim();
+        EndFireAnimation();
     }
 }
