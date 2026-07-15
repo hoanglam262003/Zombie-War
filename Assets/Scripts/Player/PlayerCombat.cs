@@ -80,7 +80,13 @@ public class PlayerCombat : MonoBehaviour
         {
             behaviour.BeginFire();
 
-            if (controller.Weapon.CurrentWeapon == WeaponType.Pistol)
+            WeaponType weapon = controller.Weapon.CurrentWeapon;
+
+            if (weapon == WeaponType.Pistol)
+            {
+                behaviour.Attack();
+            }
+            else if (weapon == WeaponType.Grenade)
             {
                 behaviour.Attack();
             }

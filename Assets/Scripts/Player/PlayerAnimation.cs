@@ -116,4 +116,26 @@ public class PlayerAnimation : MonoBehaviour
     {
         animator.SetBool(DeadHash, dead);
     }
+
+    public void AnimationBeginThrow()
+    {
+        WeaponBehaviour behaviour =
+            controller.Weapon.CurrentBehaviour;
+
+        if (behaviour == null)
+            return;
+
+        behaviour.BeginThrow();
+    }
+
+    public void AnimationEndThrow()
+    {
+        WeaponBehaviour behaviour =
+            controller.Weapon.CurrentBehaviour;
+
+        if (behaviour == null)
+            return;
+
+        behaviour.EndThrow();
+    }
 }
