@@ -190,17 +190,6 @@
                 },
                 {
                     "name": "",
-                    "id": "5e606996-9f1a-4d79-84cb-d0a1c8248565",
-                    "path": "<Joystick>/stick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "731a84e7-0c69-41e9-b5e2-d8ecade2eebe",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
@@ -212,30 +201,8 @@
                 },
                 {
                     "name": "",
-                    "id": "675e62cb-6814-42a3-a3fd-0355e1e526a3",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "876fbc00-304f-4be9-a2f6-fe448363e8ff",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c9de54a5-2a3f-4530-ba03-cef39f845d22",
-                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -302,17 +269,6 @@
                     "name": "",
                     "id": "d5615493-9c16-4a75-8fca-063261ab896c",
                     "path": "<Pointer>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AimDirection",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fa7e2535-1e36-402a-836c-220d55c062cc",
-                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
