@@ -31,21 +31,23 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         damage = Mathf.Max(0, damage);
 
         CurrentHealth -= damage;
-        SpawnBloodEffect(hitDirection);
 
         if (CurrentHealth < 0)
             CurrentHealth = 0;
 
         OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
 
+        if (CurrentHealth <= 0)
+        {
+            Die();
+            return;
+        }
+
+        SpawnBloodEffect(hitDirection);
+
         controller.Animation.PlayHit();
         controller.Movement.LockMovement(0.5f);
         controller.Combat.LockShoot(0.5f);
-
-        if (CurrentHealth > 0)
-            return;
-
-        Die();
     }
 
     private void SpawnBloodEffect(Vector3 hitDirection)
@@ -95,5 +97,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         controller.Animation.SetDead(true);
 
         OnDead?.Invoke();
+        GameOverUI.Instance.Show();
     }
 }
