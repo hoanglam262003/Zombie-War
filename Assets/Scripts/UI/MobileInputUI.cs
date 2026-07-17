@@ -107,20 +107,18 @@ public class MobileInputUI : MonoBehaviour
     {
         if (movementJoystick == null)
             return;
-
-        Vector2 joy = movementJoystick.Direction;
-
-        if (joy.sqrMagnitude > 0.001f)
-        {
-            gameInput.SetMoveInput(joy);
-        }
+        gameInput.SetMoveInput(movementJoystick.Direction);
     }
 
     private void UpdateAim()
     {
         if (aimJoystick == null)
             return;
-        gameInput.SetAimDirection(aimJoystick.Direction);
+        Vector2 dir = aimJoystick.Direction;
+
+        gameInput.SetAimDirection(dir);
+
+        gameInput.SetAimState(dir.sqrMagnitude > 0.01f);
     }
 
     private void ShootPressed()
