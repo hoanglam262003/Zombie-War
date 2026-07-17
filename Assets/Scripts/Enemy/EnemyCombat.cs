@@ -38,11 +38,7 @@ public class EnemyCombat : MonoBehaviour
 
         if (controller.Health.IsDead)
             return;
-        if (player.Health.IsDead)
-        {
-            IsAttacking = false;
-            return;
-        }
+
         float distance = Vector3.Distance(
             transform.position,
             player.transform.position);
@@ -72,8 +68,7 @@ public class EnemyCombat : MonoBehaviour
     {
         if (player == null)
             return;
-        if (player.Health.IsDead)
-            return;
+
         float distance = Vector3.Distance(
             transform.position,
             player.transform.position);
