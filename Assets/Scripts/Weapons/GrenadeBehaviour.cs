@@ -12,8 +12,7 @@ public class GrenadeBehaviour : MonoBehaviour
     [SerializeField]
     private float explosionRadius = 4f;
 
-    [SerializeField]
-    private int damage = 100;
+    private int damage;
 
     [SerializeField]
     private LayerMask zombieLayer;
@@ -53,6 +52,11 @@ public class GrenadeBehaviour : MonoBehaviour
 
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+    }
+
+    public void Initialize(int damage)
+    {
+        this.damage = damage;
     }
 
     public void Throw(Vector3 velocity)

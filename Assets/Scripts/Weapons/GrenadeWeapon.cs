@@ -73,7 +73,7 @@ public class GrenadeWeapon : WeaponBehaviour
 
         if (behaviour == null)
             return;
-
+        behaviour.Initialize(config.damage);
         Vector3 direction =
             playerController.Movement.FacingDirection;
 
