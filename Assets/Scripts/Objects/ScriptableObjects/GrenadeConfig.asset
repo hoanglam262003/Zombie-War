@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43fa5fdd8f139c4381690dde625c5b3, type: 3}
   m_Name: GrenadeConfig
   m_EditorClassIdentifier: Assembly-CSharp::WeaponConfig
-  damage: 200
+  damage: 100
   fireRate: 1
   speed: 1
   bulletPool: 3
